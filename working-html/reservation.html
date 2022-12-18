@@ -17,34 +17,24 @@
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
 
   <!-- Custom CSS -->
+  <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+
   <style>
-    .my-footer {
-      background-color: #212529;
-      color: #fffff2;
-      margin-top: 1.5em;
-      height: 5em;
-      padding: 1em;
-      font-size: 80%;
+    .btn-outline-secondary {
+      color: aqua;
+      border-color: #6c757d;
     }
 
-    .room-image {
-      max-width: 50%;
+    .paraClass {
+      font-size: 3em;
     }
 
-    .notie-container {
-      box-shadow: none;
+    .secondClass {
+      color: red;
     }
 
-    #check-availability-form {
-      width: 95%;
-    }
-
-    #swal2-html-container {
-      margin-left: 2.6em;
-    }
-
-    .datepicker {
-      z-index: 10000;
+    #lastPara {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -129,12 +119,13 @@
           <button type="submit" class="btn btn-primary">Search Availability</button>
 
         </form>
-
-
       </div>
 
-      <p id="myParagraph">This is some text!</p>
-      <p><button class="btn btn-outline-secondary" id="colorButton">Click me</button></p>
+      <div class="row">
+        <div class="col">
+          <button id="colorButton" class="btn btn-outline-secondary">Click me</button>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -142,9 +133,17 @@
 
   <!-- Footer -->
   <div class="row my-footer">
-    <div class="col">Left</div>
-    <div class="col">Middle</div>
-    <div class="col">Right</div>
+    <div class="col">
+      Left
+    </div>
+
+    <div class="col">
+      Middle
+    </div>
+
+    <div class="col">
+      Right
+    </div>
   </div>
   <!-- End Footer -->
 

@@ -1,12 +1,87 @@
 {{template "base" .}}
 
 {{define "content"}}
+
+<!-- Carousel -->
+<div id="main-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#main-carousel" data-bs-slide-to="0" class="active" aria-current="true"
+      aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#main-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#main-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+
+  <div class="carousel-inner">
+
+    <div class="carousel-item active">
+      <img src="/static/images/woman-laptop.png" class="d-block w-100" alt="Woman using laptop" />
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <img src="/static/images/outside.png" class="d-block w-100" alt="Outer space" />
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <img src="/static/images/tray.png" class="d-block w-100" alt="Tray with coffee and sweets" />
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the third slide.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<!-- End Carousel -->
+
+<!-- Container -->
 <div class="container">
+
   <div class="row">
     <div class="col">
-      <h1>This is the home page</h1>
-      <p>This is some text</p>
+      <h1 class="text-center mt-4">
+        Welcome to Fort Smythe Bed and Breakfast
+      </h1>
+      <p>
+        Your home away from home, set on the majestic waters of the Atlantic
+        Ocean, this will be a vacation to remember. Lorem ipsum dolor sit
+        amet consectetur adipisicing elit. Quas amet, corrupti impedit, ad
+        eaque explicabo placeat qui possimus eos nobis dolor quia laboriosam
+        perferendis, fugiat suscipit. Veniam, eos velit necessitatibus
+        veritatis blanditiis ipsum nisi corporis repellendus quidem ratione,
+        dignissimos voluptas commodi voluptate, molestias ullam soluta iste
+        laboriosam amet nam impedit quis? Voluptatum quasi laboriosam
+        incidunt ex quia cupiditate perferendis accusantium sit aliquid
+        commodi perspiciatis ducimus voluptates ratione error, earum, soluta
+        laborum ab nesciunt maiores. Porro vitae nulla esse amet?
+        Praesentium similique incidunt vero facere minima debitis veniam
+        autem nihil ducimus eligendi, cum explicabo asperiores. In dolorem
+        esse culpa reiciendis ipsam? Lorem ipsum, dolor sit amet consectetur
+        adipisicing elit. Assumenda, quisquam. Molestiae, incidunt! Non
+        adipisci nisi sint, commodi autem eos consectetur suscipit porro
+        necessitatibus laborum consequuntur officiis? Aut autem enim
+        deleniti rem sint molestiae, maxime inventore odio ex expedita,
+        similique beatae aperiam atque laudantium accusamus cum deserunt.
+        Facere ex fuga sed.
+      </p>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col text-center">
+      <a href="/search-availability" class="btn btn-success">Make Reservation Now</a>
+    </div>
+  </div>
+
 </div>
-{{ end }}
+<!-- End Container -->
+{{end}}

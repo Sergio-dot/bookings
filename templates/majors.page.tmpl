@@ -1,0 +1,76 @@
+{{template "base" .}}
+
+{{define "content"}}
+
+<!-- Container -->
+<div class="container">
+
+  <div class="row">
+    <div class="col">
+      <img src="static/images/majors-suite.png" class="img-fluid img-thumbnail mx-auto d-block room-image"
+        alt="Room image" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mt-4">Major's Suite</h1>
+      <p>
+        Your home away from home, set on the majestic waters of the Atlantic
+        Ocean, this will be a vacation to remember. Lorem ipsum dolor sit
+        amet consectetur adipisicing elit. Quas amet, corrupti impedit, ad
+        eaque explicabo placeat qui possimus eos nobis dolor quia laboriosam
+        perferendis, fugiat suscipit. Veniam, eos velit necessitatibus
+        veritatis blanditiis ipsum nisi corporis repellendus quidem ratione,
+        dignissimos voluptas commodi voluptate, molestias ullam soluta iste
+        laboriosam amet nam impedit quis? Voluptatum quasi laboriosam
+        incidunt ex quia cupiditate perferendis accusantium sit aliquid
+        commodi perspiciatis ducimus voluptates ratione error, earum, soluta
+        laborum ab nesciunt maiores. Porro vitae nulla esse amet?
+        Praesentium similique incidunt vero facere minima debitis veniam
+        autem nihil ducimus eligendi, cum explicabo asperiores. In dolorem
+        esse culpa reiciendis ipsam? Lorem ipsum, dolor sit amet consectetur
+        adipisicing elit. Assumenda, quisquam. Molestiae, incidunt! Non
+        adipisci nisi sint, commodi autem eos consectetur suscipit porro
+        necessitatibus laborum consequuntur officiis? Aut autem enim
+        deleniti rem sint molestiae, maxime inventore odio ex expedita,
+        similique beatae aperiam atque laudantium accusamus cum deserunt.
+        Facere ex fuga sed.
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col text-center">
+      <a id="check-availability-button" href="#!" class="btn btn-success">Check Availability</a>
+    </div>
+  </div>
+
+</div>
+<!-- End Container -->
+
+{{end}}
+
+{{define "js"}}
+<script>
+  document.getElementById("check-availability-button").addEventListener("click", function () {
+    let html = `
+        <form id="check-availability-form" action="" method="post" novalidate class="needs-validation">
+          <div class="row">
+            <div class="col">
+              <div class="row" id="reservation-dates-modal">
+                <div class="col">
+                  <input disabled autocomplete="off" required class="form-control" type="text" name="start" id="start" placeholder="Arrival">
+                </div>
+                <div class="col">
+                  <input disabled autocomplete="off" required class="form-control" type="text" name="end" id="end" placeholder="Departure">
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        `
+    attention.custom({ msg: html, title: "Choose your dates" })
+  })
+</script>
+{{end}}
