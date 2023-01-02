@@ -1,1 +1,7 @@
 .idea
+database.yml
+run.sh
+bookings
+coverage.out
+*.fizz
+*.sql
