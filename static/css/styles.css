@@ -26,3 +26,7 @@
 .swal2-actions {
   z-index: 0 !important;
 }
+
+body {
+  overflow-x: hidden !important;
+}
