@@ -28,5 +28,9 @@
 }
 
 body {
-  overflow-x: hidden !important;
+  overflow-x: hidden;
+}
+
+.logout-btn {
+  color: #ff0000;
 }
