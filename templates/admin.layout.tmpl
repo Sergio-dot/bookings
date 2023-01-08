@@ -18,7 +18,12 @@
         <!-- endinject -->
 
         <link rel="shortcut icon" href="/static/admin/images/favicon.png"/>
-        {{block "css" . }}
+        <style>
+            .content-wrapper {
+                background-color: #ffffff;
+            }
+        </style>
+        {{block "css" .}}
 
         {{end}}
     </head>

@@ -7,13 +7,16 @@ import (
 	"html/template"
 	"net/http"
 	"path/filepath"
+	"time"
 
 	"github.com/Sergio-dot/bookings/internal/config"
 	"github.com/Sergio-dot/bookings/internal/models"
 	"github.com/justinas/nosurf"
 )
 
-var functions = template.FuncMap{}
+var functions = template.FuncMap{
+	"humanDate": HumanDate,
+}
 
 var app *config.AppConfig
 var pathToTemplates = "./templates"
@@ -23,6 +26,12 @@ func NewRenderer(a *config.AppConfig) {
 	app = a
 }
 
+// HumanDate returns time in DD-MM-YYYY format
+func HumanDate(t time.Time) string {
+	return t.Format("02/01/2006")
+}
+
+// AddDefaultData adds data for all templates
 func AddDefaultData(td *models.TemplateData, r *http.Request) *models.TemplateData {
 	td.Flash = app.Session.PopString(r.Context(), "flash")
 	td.Error = app.Session.PopString(r.Context(), "error")
