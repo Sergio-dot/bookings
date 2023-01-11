@@ -29,21 +29,14 @@ var theTests = []struct {
 	{"ms", "/majors-suite", "GET", http.StatusOK},
 	{"sa", "/search-availability", "GET", http.StatusOK},
 	{"contact", "/contact", "GET", http.StatusOK},
-
-	/* 	{"post-search-availability", "/search-availability", "POST", []postData{
-	   		{key: "start", value: "2020-01-01"},
-	   		{key: "end", value: "2020-01-02"},
-	   	}, http.StatusOK},
-	   	{"post-search-availability-json", "/search-availability-json", "POST", []postData{
-	   		{key: "start", value: "2020-01-01"},
-	   		{key: "end", value: "2020-01-02"},
-	   	}, http.StatusOK},
-	   	{"post-make-reservation", "/make-reservation", "POST", []postData{
-	   		{key: "first_name", value: "John"},
-	   		{key: "last_name", value: "Smith"},
-	   		{key: "email", value: "john.smith@example.com"},
-	   		{key: "phone", value: "555-555-5555"},
-	   	}, http.StatusOK}, */
+	{"non-existent", "/green/eggs/and/ham", "GET", http.StatusNotFound},
+	// new routes
+	{"login", "/user/login", "GET", http.StatusOK},
+	{"logout", "/user/logout", "GET", http.StatusOK},
+	{"dashboard", "/admin/dashboard", "GET", http.StatusOK},
+	{"new res", "/admin/reservations-new", "GET", http.StatusOK},
+	{"all res", "/admin/reservations-all", "GET", http.StatusOK},
+	{"show res", "/admin/reservations/new/1/show", "GET", http.StatusOK},
 }
 
 func TestHandlers(t *testing.T) {
@@ -96,8 +89,8 @@ func TestRepository_Reservation(t *testing.T) {
 
 	handler.ServeHTTP(rr, req)
 
-	if rr.Code != http.StatusTemporaryRedirect {
-		t.Errorf("Reservation handler returned %d, expected %d", rr.Code, http.StatusTemporaryRedirect)
+	if rr.Code != http.StatusSeeOther {
+		t.Errorf("Reservation handler returned %d, expected %d", rr.Code, http.StatusSeeOther)
 	}
 
 	// test with non-existent room
@@ -110,8 +103,8 @@ func TestRepository_Reservation(t *testing.T) {
 
 	handler.ServeHTTP(rr, req)
 
-	if rr.Code != http.StatusTemporaryRedirect {
-		t.Errorf("Reservation handler returned %d, expected %d", rr.Code, http.StatusTemporaryRedirect)
+	if rr.Code != http.StatusSeeOther {
+		t.Errorf("Reservation handler returned %d, expected %d", rr.Code, http.StatusSeeOther)
 	}
 }
 
@@ -160,8 +153,8 @@ func TestRepository_PostReservation(t *testing.T) {
 
 	handler.ServeHTTP(rr, req)
 
-	if rr.Code != http.StatusTemporaryRedirect {
-		t.Errorf("PostReservation handler returned %d, expected %d", rr.Code, http.StatusTemporaryRedirect)
+	if rr.Code != http.StatusSeeOther {
+		t.Errorf("PostReservation handler returned %d, expected %d", rr.Code, http.StatusSeeOther)
 	}
 
 	// test for invalid start date
@@ -192,8 +185,8 @@ func TestRepository_PostReservation(t *testing.T) {
 
 	handler.ServeHTTP(rr, req)
 
-	if rr.Code != http.StatusTemporaryRedirect {
-		t.Errorf("PostReservation handler returned %d, expected %d", rr.Code, http.StatusTemporaryRedirect)
+	if rr.Code != http.StatusSeeOther {
+		t.Errorf("PostReservation handler returned %d, expected %d", rr.Code, http.StatusSeeOther)
 	}
 
 	// test for invalid end date
@@ -224,8 +217,8 @@ func TestRepository_PostReservation(t *testing.T) {
 
 	handler.ServeHTTP(rr, req)
 
-	if rr.Code != http.StatusTemporaryRedirect {
-		t.Errorf("PostReservation handler returned %d, expected %d", rr.Code, http.StatusTemporaryRedirect)
+	if rr.Code != http.StatusSeeOther {
+		t.Errorf("PostReservation handler returned %d, expected %d", rr.Code, http.StatusSeeOther)
 	}
 
 	// test for invalid roomID
@@ -256,8 +249,8 @@ func TestRepository_PostReservation(t *testing.T) {
 
 	handler.ServeHTTP(rr, req)
 
-	if rr.Code != http.StatusTemporaryRedirect {
-		t.Errorf("PostReservation handler returned %d, expected %d", rr.Code, http.StatusTemporaryRedirect)
+	if rr.Code != http.StatusSeeOther {
+		t.Errorf("PostReservation handler returned %d, expected %d", rr.Code, http.StatusSeeOther)
 	}
 
 	// test for invalid data
@@ -288,8 +281,8 @@ func TestRepository_PostReservation(t *testing.T) {
 
 	handler.ServeHTTP(rr, req)
 
-	if rr.Code != http.StatusSeeOther {
-		t.Errorf("PostReservation handler returned %d, expected %d", rr.Code, http.StatusSeeOther)
+	if rr.Code != http.StatusOK {
+		t.Errorf("PostReservation handler returned %d, expected %d", rr.Code, http.StatusOK)
 	}
 
 	// test for failure to insert reservation into database
@@ -320,8 +313,8 @@ func TestRepository_PostReservation(t *testing.T) {
 
 	handler.ServeHTTP(rr, req)
 
-	if rr.Code != http.StatusTemporaryRedirect {
-		t.Errorf("PostReservation handler returned %d, expected %d", rr.Code, http.StatusTemporaryRedirect)
+	if rr.Code != http.StatusSeeOther {
+		t.Errorf("PostReservation handler returned %d, expected %d", rr.Code, http.StatusSeeOther)
 	}
 
 	// test for failure to insert restriction into database
@@ -352,8 +345,8 @@ func TestRepository_PostReservation(t *testing.T) {
 
 	handler.ServeHTTP(rr, req)
 
-	if rr.Code != http.StatusTemporaryRedirect {
-		t.Errorf("PostReservation handler returned %d, expected %d", rr.Code, http.StatusTemporaryRedirect)
+	if rr.Code != http.StatusSeeOther {
+		t.Errorf("PostReservation handler returned %d, expected %d", rr.Code, http.StatusSeeOther)
 	}
 }
 
